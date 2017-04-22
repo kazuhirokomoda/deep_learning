@@ -39,7 +39,7 @@ class Perceptron(object):
                     self.w += label_value * self.rho * phi(X[n,:])
                     misses += 1
 
-            # learning finish when all data points are  correctly classified
+            # learning finish when all data points are correctly classified
             print(misses)
             if misses == 0:
             	break
@@ -60,7 +60,7 @@ def phi(x):
     return np.concatenate(([1], x))[:, np.newaxis]
 
 def hyperplane(w, x):
-    return np.dot(w.T, phi(x))  # 真の分離平面 5x + 3y = 1
+    return np.dot(w.T, phi(x))
 
 def calculate_value(w, X_n):
 	# assumes shape (1, 1), so use sum()
@@ -70,7 +70,7 @@ def draw_graph(X, weight, label, perceptron):
     if perceptron.d == 2:
         xmax, xmin, ymax, ymin = 3, -3, 3, -3
 
-        seq = np.arange(xmin, xmax, 0.02) # 0.02
+        seq = np.arange(xmin, xmax, 0.02)
         xlist, ylist = np.meshgrid(seq, seq)
         zlist = np.array([[calculate_value(weight, np.array([x_elem, y_elem])) for x_elem, y_elem in zip(x, y)] for x, y in zip(xlist, ylist)])
 
