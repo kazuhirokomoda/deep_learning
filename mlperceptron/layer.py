@@ -52,8 +52,6 @@ class Layer(object):
             self.input = input
         linear_output = np.dot(self.W, self.input)
         self.output = self.activation(linear_output)
-        if last != True:
-            self.output = self.__add_bias(self.output)
         return self.output
 
 
@@ -63,11 +61,9 @@ class Layer(object):
         next: l
         numpy.atleast_2d(*arys): View inputs as arrays with at least two dimensions.
         """
-        if prev_layer_delta.shape[0] > 1:
-            prev_layer_delta = prev_layer_delta[1::]
-        delta_next = self.d_activation(self.input) * np.dot(self.W.T, prev_layer_delta)
 
-        self.W -= lr * np.dot(np.atleast_2d(prev_layer_delta), np.atleast_2d(self.input).T)
+        delta_next = self.d_activation(self.input) * np.dot(self.W.T, prev_layer_delta)
+        self.W -= lr * np.dot(np.atleast_2d(prev_layer_delta).T, np.atleast_2d(self.input))
         self.delta_next = delta_next
         return delta_next
 
@@ -81,4 +77,3 @@ class Layer(object):
         Used only for the output layer in backward propagation
         """
         return (self.output - y) * self.d_activation(self.output)
-
