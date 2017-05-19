@@ -41,9 +41,62 @@ The sample result of draw_graph function can be seen in [perceptron/perceptron.p
 ## Multi Layer Perceptron
 has the ability to solve some linear inseparable problems.
 
+### sample output
+
+```
+epoch:     0, loss: 2.01165
+epoch:  1000, loss: 1.47072
+epoch:  2000, loss: 1.48494
+epoch:  3000, loss: 1.34211
+epoch:  4000, loss: 1.34242
+epoch:  5000, loss: 1.33782
+epoch:  6000, loss: 1.34714
+epoch:  7000, loss: 1.35117
+epoch:  8000, loss: 1.35228
+epoch:  9000, loss: 1.36138
+[0 0] 0 [[ 0.32544176  0.67456832]]
+[0 1] 1 [[ 0.97572499  0.02427763]]
+[1 0] 1 [[ 0.32518525  0.67472581]]
+[1 1] 0 [[ 0.32544183  0.67456823]]
+epoch:     0, loss: 3956.91455
+epoch:  1000, loss: 1349.92425
+epoch:  2000, loss: 739.92657
+epoch:  3000, loss: 439.50536
+epoch:  4000, loss: 358.56261
+epoch:  5000, loss: 240.14291
+epoch:  6000, loss: 243.83579
+epoch:  7000, loss: 219.30163
+epoch:  8000, loss: 170.61104
+epoch:  9000, loss: 155.69228
+[[11  0  0  0  0  0  0  0  0  0]
+ [ 0 15  0  0  0  0  0  0  0  0]
+ [ 0  0 18  0  0  0  0  0  0  0]
+ [ 0  0  0 19  0  0  0  1  0  0]
+ [ 0  0  0  0 18  0  0  1  0  0]
+ [ 0  0  0  0  0 22  1  0  0  1]
+ [ 0  0  0  0  0  0 18  0  0  0]
+ [ 0  0  0  0  0  0  0 16  0  0]
+ [ 0  1  0  0  0  0  1  0 18  0]
+ [ 0  0  0  0  0  0  0  0  0 19]]
+             precision    recall  f1-score   support
+
+          0       1.00      1.00      1.00        11
+          1       0.94      1.00      0.97        15
+          2       1.00      1.00      1.00        18
+          3       1.00      0.95      0.97        20
+          4       1.00      0.95      0.97        19
+          5       1.00      0.92      0.96        24
+          6       0.90      1.00      0.95        18
+          7       0.89      1.00      0.94        16
+          8       1.00      0.90      0.95        20
+          9       0.95      1.00      0.97        19
+
+avg / total       0.97      0.97      0.97       180
+```
+
 ### issues
 
-- label is not yet expressed as 1-of-K expression
+- ~~label is not yet expressed as 1-of-K expression~~
 
 
 
