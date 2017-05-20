@@ -101,8 +101,14 @@ avg / total       0.97      0.97      0.97       180
 
 
 ## references
+
+### perceptron
 - http://gihyo.jp/dev/serial/01/machine-learning/0017
 - http://qiita.com/murataR/items/74a3a89ffcccb688d71f
+
+### mlperceptron
 - http://stackoverflow.com/questions/31947140/sklearn-labelbinarizer-returns-vector-when-there-are-2-classes
-
-
+- http://hokuts.com/2016/10/09/bp2/
+- http://aidiary.hatenablog.com/entry/20140201/1391218771
+- http://btgr.hateblo.jp/entry/2016/05/17/092903
+- https://github.com/yusugomori/DeepLearning/blob/master/python/MLP.py
