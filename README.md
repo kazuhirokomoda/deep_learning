@@ -119,8 +119,10 @@ cd ~/git/deep_learning/fast.ai; pwd
 
 ### a) local environment
 
+under the virtual environment (py3tf), 
 ```
-TODO
+jupyter notebook
+
 ```
 
 ```
