@@ -129,6 +129,7 @@ jupyter notebook
 ■ 仮想環境py3tfに足りなくてconda install (またはpip install)したモジュール
 matplotlib
 Theano
+keras
 Pillow (PIL)
 scikit-learn
 bcolz
@@ -165,9 +166,33 @@ sh setup.sh
 #### upload data via FloydHub and use it
 
 ```
-TODO
+cd ~/git/deep_learning/fast.ai; pwd
+
+# download the dogs and cats dataset to an empty folder
+mkdir floydhub.data.zipped
+cd floydhub.data.zipped; pwd
+wget http://files.fast.ai/data/dogscats.zip
+
+# upload the zipped dataset to floydnet, and create a floydnet dataset
+floyd data init dogscats.zipped
+floyd data upload
+
+# unzip the data on floydnet
+# 1. the data ID should be the one you see from the above step
+# 2. the mounted data is available in /input/ directory, and you need to direct the unzipped files to /output/ directory
+mkdir floydhub.data.unzip
+cd floydhub.data.unzip; pwd
+floyd init dogscats.unzip
+floyd run --gpu --data [DATA ID] "unzip /input/dogscats.zip -d /output"
+
+# run
+cd ~/git/deep_learning/fast.ai; pwd
+mv data/ data.backup/
+floyd init dogscats
+floyd run --mode jupyter --data [DATA ID] --env theano:py2 --gpu
 ```
 
+for example,
 ```
 (py3tf)➜  floydhub.fast.ai.data.unzip git:(master) ✗ floyd run --gpu --data BSNUitG8kVN746BwWUuG8E "unzip /input/dogscats.zip -d /output"
 Creating project run. Total upload size: 282.0B
@@ -183,8 +208,6 @@ To view logs enter:
 
 (py3tf)➜  floydhub.fast.ai.data.unzip git:(master) ✗ floyd logs TQjERgHoT9TbjR3rQJrUyU
 ```
-
-
 
 
 ## references
