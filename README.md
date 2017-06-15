@@ -180,6 +180,7 @@ floyd data upload
 # unzip the data on floydnet
 # 1. the data ID should be the one you see from the above step
 # 2. the mounted data is available in /input/ directory, and you need to direct the unzipped files to /output/ directory
+cd ~/git/deep_learning/fast.ai; pwd
 mkdir floydhub.data.unzip
 cd floydhub.data.unzip; pwd
 floyd init dogscats.unzip
@@ -188,8 +189,15 @@ floyd run --gpu --data [DATA ID] "unzip /input/dogscats.zip -d /output"
 # run
 cd ~/git/deep_learning/fast.ai; pwd
 mv data/ data.backup/
+
+# edit notebook in the local environment, and then update to Floyd environment.
+
 floyd init dogscats
-floyd run --mode jupyter --data [DATA ID] --env theano:py2 --gpu
+(if needed) floyd login
+#floyd run --mode jupyter --data [DATA ID] --env theano:py2 --gpu
+floyd run --mode jupyter --data [DATA ID] --env theano --gpu
+
+
 ```
 
 for example,
@@ -207,6 +215,32 @@ To view logs enter:
     floyd logs TQjERgHoT9TbjR3rQJrUyU
 
 (py3tf)➜  floydhub.fast.ai.data.unzip git:(master) ✗ floyd logs TQjERgHoT9TbjR3rQJrUyU
+```
+
+after successfully running the experiment,
+```
+(py3tf)➜  lesson1 git:(master) ✗ floyd info t4R7wEzbiEo7jG6SKMVCqc
+-----------  ----------------------
+Run ID       t4R7wEzbiEo7jG6SKMVCqc
+Name         sunrize/dogscats:5
+Created      10 hours ago
+Status       shutdown
+Duration(s)  6433
+Output ID    JDHYEuWDEtzKbKpGvWUbRb
+Instance     gpu
+Version      5
+-----------  ----------------------
+```
+
+so you can use [Output ID] to utilize the output in the next experiments (as describe in [the FloydHub document](http://docs.floydhub.com/home/managing_output/))
+
+> To use the output of a project as an input to another job you can pass the Output ID as the --data parameter in the [run](http://docs.floydhub.com/commands/run/) command. The contents of this will be available at /input in the new job.
+
+
+#### Submit result to Kaggle
+
+```
+kg submit submission1.csv -c dogs-vs-cats-redux-kernels-edition
 ```
 
 
