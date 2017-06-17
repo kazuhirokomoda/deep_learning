@@ -91,3 +91,5 @@ ENV/
 # mac
 *.DS_Store
 
+# exclude data
+data
